@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="BPlusTree.cpp" />
+    <ClCompile Include="CuckooHash.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SplayTree.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BPlusTree.h" />
+    <ClInclude Include="CuckooHash.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="SplayTree.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{26840DA4-4BA7-4BAE-AD5D-266EC414B875}</ProjectGuid>
@@ -137,8 +150,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
