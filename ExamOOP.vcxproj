@@ -22,6 +22,7 @@
     <ClCompile Include="BPlusTree.cpp" />
     <ClCompile Include="CuckooHash.cpp" />
     <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Sortings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SplayTree.cpp" />
   </ItemGroup>
@@ -29,6 +30,7 @@
     <ClInclude Include="BPlusTree.h" />
     <ClInclude Include="CuckooHash.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Sortings.h" />
     <ClInclude Include="SplayTree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
