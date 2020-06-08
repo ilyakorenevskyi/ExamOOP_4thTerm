@@ -96,11 +96,11 @@ TreeNode<T>* SplayTree<T>::insert(T obj,int key)
 	root = splay(root, obj->key);
 
 	// if key is already in tree
-	if (root->key == obj->key) return root;
+	if (root->key == key) return root;
 
 	TreeNode<T>* newTreeNode = new TreeNode<T> * (obj, key); //allocate memory for new element
 
-	if (root->key > obj->key) //if root bigger than key then make it new right child, and root's left  child make new left child
+	if (root->key > key) //if root bigger than key then make it new right child, and root's left  child make new left child
 	{
 		newTreeNode->right = root;
 		newTreeNode->left = root->left;
