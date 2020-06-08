@@ -1,6 +1,7 @@
 
 #ifndef SPLAYTREE_CPP
 #define SPLAYTREE_CPP
+
 #include "SplayTree.h"
 template <typename K, typename T>
 TreeNode<K,T>::TreeNode(T obj, K key){

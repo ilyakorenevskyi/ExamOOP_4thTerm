@@ -16,7 +16,7 @@ class MyMap{
 //	Hash table;
 //
 //};
-template <typename T, typename K>
+template <typename K, typename T>
 class MyMapTree :public MyMap<K, T> {
 	SplayTree<K, T>* tree;
 public:
@@ -30,35 +30,35 @@ public:
 	std::vector<std::pair<K, T>> getPairs() override;
 };
 
-template<typename T, typename K>
- MyMapTree<T, K>::MyMapTree(){
+template<typename K, typename T>
+ MyMapTree<K, T>::MyMapTree(){
 	 tree = new SplayTree<K,T>();
 }
 
-template<typename T, typename K>
-T MyMapTree<T, K>::get(K key){
+template<typename K, typename T>
+T MyMapTree<K, T>::get(K key){
 	return tree->search(key)->getValue();
 }
 
-template<typename T, typename K>
- void MyMapTree<T, K>::set(K key, T value){
+template<typename K, typename T>
+ void MyMapTree<K, T>::set(K key, T value){
 	TreeNode<K, T>* cur = tree->search(key);
 	if (cur->getKey() == key)  cur->setValue(value);
 	else  add(key, value);
 }
 
-template<typename T, typename K>
-void MyMapTree<T, K>::add(K key, T value){
+template<typename K, typename T>
+void MyMapTree<K, T>::add(K key, T value){
 	tree->insert(value, key);
 }
 
-template<typename T, typename K>
-void MyMapTree<T, K>::remove(K key){
+template<typename K, typename T>
+void MyMapTree<K, T>::remove(K key){
 	tree->delete_key(key);
 }
 
-template<typename T, typename K>
-inline std::vector<K> MyMapTree<T, K>::getKeys()
+template<typename K, typename T>
+inline std::vector<K> MyMapTree<K, T>::getKeys()
 {
 	std::vector<K> result;
 	std::vector<std::pair<K, T>> pairs = tree->preOrder();
@@ -68,8 +68,8 @@ inline std::vector<K> MyMapTree<T, K>::getKeys()
 	return result;
 }
 
-template<typename T, typename K>
- std::vector<T> MyMapTree<T, K>::getValues()
+template<typename K, typename T>
+ std::vector<T> MyMapTree<K, T>::getValues()
 {
 	std::vector<T> result;
 	std::vector<std::pair<K, T>> pairs = tree->preOrder();
@@ -79,8 +79,8 @@ template<typename T, typename K>
 	return result;
 }
 
- template<typename T, typename K>
-std::vector<std::pair<K, T>> MyMapTree<T, K>::getPairs()
+ template<typename K, typename T>
+std::vector<std::pair<K, T>> MyMapTree<K, T>::getPairs()
  {
 	 return tree->preOrder();
 
