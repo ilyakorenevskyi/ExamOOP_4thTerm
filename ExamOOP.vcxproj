@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BPlusTree.cpp" />
+    <ClCompile Include="CodeSnippet.cpp" />
     <ClCompile Include="CuckooHash.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="MyMap.cpp" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BPlusTree.h" />
+    <ClInclude Include="CodeSnippet.h" />
     <ClInclude Include="CuckooHash.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MyMap.h" />
