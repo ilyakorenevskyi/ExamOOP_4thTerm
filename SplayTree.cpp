@@ -1,3 +1,6 @@
+
+#ifndef SPLAYTREE_CPP
+#define SPLAYTREE_CPP
 #include "SplayTree.h"
 template <typename K, typename T>
 TreeNode<K,T>::TreeNode(T obj, K key){
@@ -82,6 +85,10 @@ TreeNode<K,T>* SplayTree<K,T>::splay(TreeNode<K,T>* root_,K key) //splay functio
 		return (root_->right == nullptr) ? root_ : leftRotate(root_); // Do second rotation for root_  if we need
 	}
 }
+template<typename K, typename T>
+SplayTree<K, T>::SplayTree(){
+	root = nullptr;
+}
 template <typename K, typename T>
 TreeNode<K,T>* SplayTree<K,T>::search( K key)
 {
@@ -89,18 +96,18 @@ TreeNode<K,T>* SplayTree<K,T>::search( K key)
 	return this->root;
 }
 template <typename K, typename T>
-void SplayTree<K,T>::preOrderRec(TreeNode<K,T>* root_) {
-	if (root_ != nullptr)
-	{
-		std::cout << root_->obj << " ";
-		preOrderRec(root_->left);
-		preOrderRec(root_->right);
+void SplayTree<K, T>::preOrderRec(TreeNode<K, T>* root_, std::vector<std::pair<K, T>>& res) {
+	if (root_ != nullptr){
+		res.push_back(std::pair<K,T>(root_->key,root_->obj));
+		preOrderRec(root_->left,res);
+		preOrderRec(root_->right,res);
 	}
 }
 template <typename K, typename T>
-void SplayTree<K,T>::preOrder()  //returns tree
-{
-	preOrderRec(this->root);
+std::vector<std::pair<K, T>> SplayTree<K,T>::preOrder(){ //returns tree
+	std::vector<std::pair<K, T>> res;
+	preOrderRec(this->root,res);
+	return res;
 }
 template <typename K, typename T>
 void SplayTree<K,T>::insert(T obj,K key)
@@ -108,15 +115,17 @@ void SplayTree<K,T>::insert(T obj,K key)
 	// if tree is empty 
 
 
-	if (root == nullptr) return  TreeNode<K,T>*(obj,key);
-
+	if (root == nullptr) {
+		root = new TreeNode<K, T>(obj, key);
+		return;
+	}
 	// make closest key to our key root  
 	root = splay(root, key);
 
 	// if key is already in tree
-	if (root->key == key) return root;
+	if (root->key == key) return;
 
-	TreeNode<K,T>* newTreeNode = new TreeNode<K,T> * (obj, key); //allocate memory for new element
+	TreeNode<K,T>* newTreeNode = new TreeNode<K,T> (obj, key); //allocate memory for new element
 
 	if (root->key > key) //if root bigger than key then make it new right child, and root's left  child make new left child
 	{
@@ -162,3 +171,5 @@ TreeNode<K,T>* SplayTree<K,T>::delete_key(K key){
 	}
 	return root;
 }
+
+#endif 

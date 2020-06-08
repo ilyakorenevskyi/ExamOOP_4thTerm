@@ -2,9 +2,11 @@
 #include "SplayTree.h"
 #include "BPlusTree.h"
 #include "Sortings.h"
+#include "MyMap.h"
 int main() {
-	InsertionSort<int> merg;
-	vector<int> v = { 1,5,3,2,7 };
-	merg.sort(v, 0, 4);
+	MyMapTree<int, int> m1;
+	m1.add(1, 2);
+	m1.add(2, 3);
+	std::cout << m1.get(1);
 	return 0;
 }

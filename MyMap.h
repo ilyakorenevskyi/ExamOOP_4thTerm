@@ -18,7 +18,9 @@ class MyMap{
 //};
 template <typename T, typename K>
 class MyMapTree :public MyMap<K, T> {
-	SplayTree<K, T> tree;
+	SplayTree<K, T>* tree;
+public:
+	MyMapTree();
 	T get(K key) override;
 	void set(K key, T value) override;
 	void add(K key, T value) override;
@@ -29,23 +31,57 @@ class MyMapTree :public MyMap<K, T> {
 };
 
 template<typename T, typename K>
+ MyMapTree<T, K>::MyMapTree(){
+	 tree = new SplayTree<K,T>();
+}
+
+template<typename T, typename K>
 T MyMapTree<T, K>::get(K key){
-	return tree.search(key)->getValue();
+	return tree->search(key)->getValue();
 }
 
 template<typename T, typename K>
  void MyMapTree<T, K>::set(K key, T value){
-	TreeNode<K, T>* cur = tree.search(key);
+	TreeNode<K, T>* cur = tree->search(key);
 	if (cur->getKey() == key)  cur->setValue(value);
 	else  add(key, value);
 }
 
 template<typename T, typename K>
 void MyMapTree<T, K>::add(K key, T value){
-	tree.insert(value, key);
+	tree->insert(value, key);
 }
 
 template<typename T, typename K>
 void MyMapTree<T, K>::remove(K key){
 	tree->delete_key(key);
 }
+
+template<typename T, typename K>
+inline std::vector<K> MyMapTree<T, K>::getKeys()
+{
+	std::vector<K> result;
+	std::vector<std::pair<K, T>> pairs = tree->preOrder();
+	for (auto cur : pairs) {
+		result.push_back(cur.first);
+	}
+	return result;
+}
+
+template<typename T, typename K>
+ std::vector<T> MyMapTree<T, K>::getValues()
+{
+	std::vector<T> result;
+	std::vector<std::pair<K, T>> pairs = tree->preOrder();
+	for (auto cur : pairs) {
+		result.push_back(cur.second);
+	}
+	return result;
+}
+
+ template<typename T, typename K>
+std::vector<std::pair<K, T>> MyMapTree<T, K>::getPairs()
+ {
+	 return tree->preOrder();
+
+ }
