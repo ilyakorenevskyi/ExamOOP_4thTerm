@@ -1,28 +1,28 @@
 #include "SplayTree.h"
-template <typename T>
-TreeNode<T>::TreeNode(T obj, int key){
+template <typename K, typename T>
+TreeNode<K,T>::TreeNode(T obj, K key){
 	this->key = key;
 	this->obj = obj;
 	this->left = this->right = nullptr;
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::rightRotate(TreeNode<T>* x) // rotate right
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::rightRotate(TreeNode<K,T>* x) // rotate right
 {
-	TreeNode<T>* y = x->left;
+	TreeNode<K,T>* y = x->left;
 	x->left = y->right;
 	y->right = x;
 	return y;
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::leftRotate(TreeNode<T>* x) // rotate left
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::leftRotate(TreeNode<K,T>* x) // rotate left
 {
-	TreeNode<T>* y = x->right;
+	TreeNode<K,T>* y = x->right;
 	x->right = y->left;
 	y->left = x;
 	return y;
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::splay(TreeNode<T>* root_,int key) //splay function
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::splay(TreeNode<K,T>* root_,K key) //splay function
 {
 	if (root_ == nullptr || root_->key == key)
 		return root_;
@@ -65,13 +65,13 @@ TreeNode<T>* SplayTree<T>::splay(TreeNode<T>* root_,int key) //splay function
 		return (root_->right == nullptr) ? root_ : leftRotate(root_); // Do second rotation for root_  if we need
 	}
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::search( int key)
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::search( K key)
 {
 	this->root = splay(this->root, key);
 }
-template <typename T>
-void SplayTree<T>::preOrderRec(TreeNode<T>* root_) {
+template <typename K, typename T>
+void SplayTree<K,T>::preOrderRec(TreeNode<K,T>* root_) {
 	if (root_ != nullptr)
 	{
 		std::cout << root_->obj << " ";
@@ -79,18 +79,18 @@ void SplayTree<T>::preOrderRec(TreeNode<T>* root_) {
 		preOrderRec(root_->right);
 	}
 }
-template <typename T>
-void SplayTree<T>::preOrder()  //returns tree
+template <typename K, typename T>
+void SplayTree<K,T>::preOrder()  //returns tree
 {
 	preOrderRec(this->root);
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::insert(T obj,int key)
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::insert(T obj,K key)
 {
 	// if tree is empty 
 
 
-	if (root == nullptr) return  TreeNode<T>*(obj,key);
+	if (root == nullptr) return  TreeNode<K,T>*(obj,key);
 
 	// make closest key to our key root  
 	root = splay(root, obj->key);
@@ -98,7 +98,7 @@ TreeNode<T>* SplayTree<T>::insert(T obj,int key)
 	// if key is already in tree
 	if (root->key == key) return root;
 
-	TreeNode<T>* newTreeNode = new TreeNode<T> * (obj, key); //allocate memory for new element
+	TreeNode<K,T>* newTreeNode = new TreeNode<K,T> * (obj, key); //allocate memory for new element
 
 	if (root->key > key) //if root bigger than key then make it new right child, and root's left  child make new left child
 	{
@@ -115,11 +115,11 @@ TreeNode<T>* SplayTree<T>::insert(T obj,int key)
 		root->right = nullptr;
 	}
 
-	return newTreeNode; // newTreeNode<T> becomes new root  
+	return newTreeNode; // newTreeNode<K,T> becomes new root  
 }
-template <typename T>
-TreeNode<T>* SplayTree<T>::delete_key(int key){
-	TreeNode<T>* temp;
+template <typename K, typename T>
+TreeNode<K,T>* SplayTree<K,T>::delete_key(K key){
+	TreeNode<K,T>* temp;
 	if (!root)
 		return nullptr;
 
