@@ -28,3 +28,24 @@ class MyMapTree :public MyMap<K, T> {
 	std::vector<std::pair<K, T>> getPairs() override;
 };
 
+template<typename T, typename K>
+T MyMapTree<T, K>::get(K key){
+	return tree.search(key)->getValue();
+}
+
+template<typename T, typename K>
+ void MyMapTree<T, K>::set(K key, T value){
+	TreeNode<K, T>* cur = tree.search(key);
+	if (cur->getKey() == key)  cur->setValue(value);
+	else  add(key, value);
+}
+
+template<typename T, typename K>
+void MyMapTree<T, K>::add(K key, T value){
+	tree.insert(value, key);
+}
+
+template<typename T, typename K>
+void MyMapTree<T, K>::remove(K key){
+	tree->delete_key(key);
+}

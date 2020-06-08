@@ -5,6 +5,23 @@ TreeNode<K,T>::TreeNode(T obj, K key){
 	this->obj = obj;
 	this->left = this->right = nullptr;
 }
+template<typename K, typename T>
+T TreeNode<K, T>::getValue()
+{
+	return obj;
+}
+template<typename K, typename T>
+void TreeNode<K, T>::setValue(T val){
+	this->obj = val;
+}
+
+template<typename K, typename T>
+K TreeNode<K, T>::getKey()
+{
+	return key;
+}
+
+
 template <typename K, typename T>
 TreeNode<K,T>* SplayTree<K,T>::rightRotate(TreeNode<K,T>* x) // rotate right
 {
@@ -69,6 +86,7 @@ template <typename K, typename T>
 TreeNode<K,T>* SplayTree<K,T>::search( K key)
 {
 	this->root = splay(this->root, key);
+	return this->root;
 }
 template <typename K, typename T>
 void SplayTree<K,T>::preOrderRec(TreeNode<K,T>* root_) {
@@ -85,7 +103,7 @@ void SplayTree<K,T>::preOrder()  //returns tree
 	preOrderRec(this->root);
 }
 template <typename K, typename T>
-TreeNode<K,T>* SplayTree<K,T>::insert(T obj,K key)
+void SplayTree<K,T>::insert(T obj,K key)
 {
 	// if tree is empty 
 
@@ -93,7 +111,7 @@ TreeNode<K,T>* SplayTree<K,T>::insert(T obj,K key)
 	if (root == nullptr) return  TreeNode<K,T>*(obj,key);
 
 	// make closest key to our key root  
-	root = splay(root, obj->key);
+	root = splay(root, key);
 
 	// if key is already in tree
 	if (root->key == key) return root;
@@ -115,7 +133,7 @@ TreeNode<K,T>* SplayTree<K,T>::insert(T obj,K key)
 		root->right = nullptr;
 	}
 
-	return newTreeNode; // newTreeNode<K,T> becomes new root  
+	root =  newTreeNode; // newTreeNode<K,T> becomes new root  
 }
 template <typename K, typename T>
 TreeNode<K,T>* SplayTree<K,T>::delete_key(K key){
