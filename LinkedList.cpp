@@ -1,5 +1,9 @@
 #include "LinkedList.h"
 template<typename T>
+Node<T>::Node()
+{
+}
+template<typename T>
 T Node<T>::getValue()
 {
 	return data;
