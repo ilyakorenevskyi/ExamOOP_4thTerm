@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <map>
 #include "SplayTree.h"
 #include "SeparateHash.h"
 template <typename K, typename T>
@@ -22,6 +23,20 @@ class MyMapTree :public MyMap<K, T> {
 	SplayTree<K, T>* tree;
 public:
 	MyMapTree();
+	T get(K key) override;
+	void set(K key, T value) override;
+	void add(K key, T value) override;
+	void remove(K key) override;
+	std::vector<K> getKeys() override;
+	std::vector<T> getValues() override;
+	std::vector<std::pair<K, T>> getPairs() override;
+};
+
+template<typename K, typename T>
+class MapAdapterToMyMap : public MyMap<K, T> {
+	std::map<K, T> map_;
+public:
+	MapAdapterToMyMap();
 	T get(K key) override;
 	void set(K key, T value) override;
 	void add(K key, T value) override;

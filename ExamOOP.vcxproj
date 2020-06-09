@@ -24,6 +24,8 @@
     <ClCompile Include="CuckooHash.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="MyMap.cpp" />
+    <ClCompile Include="MySet.cpp" />
+    <ClCompile Include="MySortingList.cpp" />
     <ClCompile Include="SeparateHash.cpp" />
     <ClCompile Include="Sortings.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -35,6 +37,8 @@
     <ClInclude Include="CuckooHash.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MyMap.h" />
+    <ClInclude Include="MySet.h" />
+    <ClInclude Include="MySortingList.h" />
     <ClInclude Include="SeparateHash.h" />
     <ClInclude Include="Sortings.h" />
     <ClInclude Include="SplayTree.h" />
