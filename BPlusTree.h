@@ -1,32 +1,41 @@
-// Searching on a B+ tree in C++
+#ifndef BPLUSTREE_H
+#define BPLUSTREE_H
 
 
 #include <iostream>
 
 using namespace std;
 int const MAX = 3;
+template <typename K, typename T>
+class BPTree;
 
 // BP node
+template <typename K,typename T>
 class Node {
-    bool IS_LEAF;
-    int* key, size;
-    Node** ptr;
-    friend class BPTree;
+    bool is_leaf;
+    std::pair<K, T>* obj;
+    int size;
+    Node<K,T>** ptr;
+    friend class BPTree<K,T>;
 
 public:
     Node();
 };
 
-// BP tree
+
+template <typename K, typename T>
 class BPTree {
-    Node* root;
-    void insertInternal(int, Node*, Node*);
-    Node* findParent(Node*, Node*);
+    Node<K,T>* root;
+    void insertInternal(std::pair<K, T> x, Node<K, T>* cursor, Node<K, T>* child);
+    Node<K,T>* findParent(Node<K,T>*, Node<K,T>*);
 
 public:
     BPTree();
-    void search(int);
-    void insert(int);
-    void display(Node*);
-    Node* getRoot();
+    void search(K);
+    void insert(K,T);
+    //void display(Node*);
+    Node<K,T>* getRoot();
 };
+ 
+#include "BPlusTree.cpp"
+#endif

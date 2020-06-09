@@ -2,7 +2,7 @@
 #include <vector>
 #include "SplayTree.h"
 #include "SeparateHash.h"
-template <typename T, typename K>
+template <typename K, typename T>
 class MyMap{
 	virtual T get(K key) = 0;
 	virtual void set(K key, T value) = 0;
@@ -86,6 +86,7 @@ std::vector<std::pair<K, T>> MyMapTree<K, T>::getPairs()
 	 return tree->preOrder();
 
  }
+
 
 template <typename K, typename T>
 class MyMapHash :public MyMap<K, T> {
