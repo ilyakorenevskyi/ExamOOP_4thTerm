@@ -1,12 +1,22 @@
+#ifndef LINKEDLIST_CPP
+#define LINKEDLIST_CPP
+
 #include "LinkedList.h"
 template<typename T>
-Node<T>::Node()
-{
+Node<T>::Node(){
 }
 template<typename T>
 T Node<T>::getValue()
 {
 	return data;
+}
+
+template<typename T>
+LinkedList<T>::LinkedList(std::vector<T> data){
+	head = tail = nullptr;
+	for (int i = 0; i < data.size(); i++) {
+		this->add(data[i]);
+	}
 }
 
 template<typename T>
@@ -17,7 +27,7 @@ void LinkedList<T>::add(T value) {
 		tail = head;
 	}
 	else {
-		Node* temp = new Node<T>(value);
+		Node<T>* temp = new Node<T>(value);
 		tail->next = temp;
 		tail = tail->next;
 	}
@@ -74,6 +84,18 @@ void LinkedList<T>::addElementAtHead(T value) {
 }
 
 template<typename T>
+std::vector<T> LinkedList<T>::toVector()
+{
+	std::vector<T> res;
+	Node<T>*  cur = head;
+	while (cur != nullptr) {
+		res.push_back(cur->data);
+		cur = cur->next;
+	}
+	return res;
+}
+
+template<typename T>
 void LinkedList<T>::addElementAtPos(int position, T value) {
 	Node<T>* pre = new Node<T>;
 	Node<T>* cur = new Node<T>;
@@ -103,3 +125,4 @@ void LinkedList<T>::deleteElement(int position)
 	}
 	previous->next = current->next;
 }
+#endif

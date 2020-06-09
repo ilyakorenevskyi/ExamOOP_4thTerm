@@ -1,4 +1,8 @@
-#pragma once
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+ // LINKEDLIST.H
+
+#include <vector>
 //template <typename T, typename U>
 //class Iterator {
 //public:
@@ -29,15 +33,17 @@
 //};
 template <typename T>
 class LinkedList;
+
 template <typename T>
 class Node {
 	T data;
-	Node* next;
+	Node<T>* next;
 public:
 	Node();
 	Node(T value) :data(value) {}
 	T getValue();
 	friend class LinkedList<T>;
+
 };
 
 template <typename T>
@@ -46,14 +52,19 @@ class LinkedList{
 	Node<T>* tail;
  
 public:
+	LinkedList() :head(nullptr), tail(nullptr) {};
+	LinkedList(std::vector<T>);
 	void add(T value);
 	void add(Node<T>* node);
 	Node<T>* getElement(int position);
 	int getPosition(T value);
 	void addElementAtHead(T value);
+	std::vector<T> toVector();
 	void addElementAtPos(int position, T value);
 	void deleteElement(int position);
 	void output();
 };
 
+#include "LinkedList.cpp"
+#endif
 

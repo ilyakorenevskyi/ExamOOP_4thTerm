@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <thread>
 template <typename T>
 class SortingStrategy{
 protected:
@@ -62,7 +61,7 @@ void QuickSort<T>::sort(std::vector<T>& to_sort, int beg, int end) {
         while ( SortingStrategy<T>::comp(to_sort[i], pivot)) {
             i++;
         }
-        while (! SortingStrategy<T>::comp(to_sort[j], pivot)) {
+        while (!SortingStrategy<T>::comp(to_sort[j], pivot)) {
             j--;
         }
         if (i <= j) {
@@ -97,7 +96,7 @@ void InsertionSort<T>::sort(std::vector<T>& to_sort, int beg, int end) {
 }
 template<typename T>
 void MergeSort<T>::sort(std::vector<T>& to_sort, int beg, int end) {
-    if (end - beg > 1) {
+    if (end - beg  >= 1) {
         int mid = beg + (end - beg) / 2;
         sort(to_sort, beg, mid);
         sort(to_sort, mid + 1, end);
