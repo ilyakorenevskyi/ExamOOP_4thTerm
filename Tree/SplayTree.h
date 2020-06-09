@@ -5,6 +5,7 @@
 #include <vector>
 template <typename K, typename T>
 class SplayTree;
+
 template <typename K, typename T>
 class TreeNode{
 	K key;
@@ -17,6 +18,7 @@ public:
 	void setValue(T);
 	K getKey();
 };
+
 template <typename K, typename T>
 class SplayTree {
 	TreeNode<K, T>* root;
