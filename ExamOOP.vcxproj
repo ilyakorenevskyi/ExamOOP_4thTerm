@@ -19,31 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BPlusTree.cpp" />
-    <ClCompile Include="CodeSnippet.cpp" />
-    <ClCompile Include="CuckooHash.cpp" />
+    <ClCompile Include="CodeSnippet\CodeSnippet.cpp" />
+    <ClCompile Include="Hash\CuckooHash.cpp" />
     <ClCompile Include="LinkedList.cpp" />
-    <ClCompile Include="MyMap.cpp" />
-    <ClCompile Include="MySet.cpp" />
+    <ClCompile Include="Map\MyMap.cpp" />
+    <ClCompile Include="Set\MySet.cpp" />
     <ClCompile Include="MySortingList.cpp" />
-    <ClCompile Include="SeparateHash.cpp" />
-    <ClCompile Include="Sortings.cpp" />
+    <ClCompile Include="Hash\SeparateHash.cpp" />
+    <ClCompile Include="Sortings\Sortings.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="SplayTree.cpp" />
     <ClCompile Include="Tree\BPlusTree.cpp" />
     <ClCompile Include="Tree\SplayTree.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BPlusTree.h" />
-    <ClInclude Include="CodeSnippet.h" />
-    <ClInclude Include="CuckooHash.h" />
+    <ClInclude Include="Tree\BPlusTree.h" />
+    <ClInclude Include="CodeSnippet\CodeSnippet.h" />
+    <ClInclude Include="Hash\CuckooHash.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="MyMap.h" />
-    <ClInclude Include="MySet.h" />
+    <ClInclude Include="Map\MyMap.h" />
+    <ClInclude Include="Set\MySet.h" />
     <ClInclude Include="MySortingList.h" />
     <ClInclude Include="SeparateHash.h" />
-    <ClInclude Include="Sortings.h" />
-    <ClInclude Include="SplayTree.h" />
+    <ClInclude Include="Sortings\Sortings.h" />
+    <ClInclude Include="Tree\SplayTree.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
