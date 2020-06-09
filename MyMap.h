@@ -100,7 +100,7 @@ template<typename K, typename T>
 
  template<typename K, typename T>
 std::vector<std::pair<K, T>> MyMapTree<K, T>::getPairs() {
-	
+	return tree->preOrder();
  }
 
 

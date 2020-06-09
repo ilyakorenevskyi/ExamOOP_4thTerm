@@ -10,7 +10,7 @@ public:
 	SortingStrategy(bool (*comp_)(T, T));
 	void setComp(bool (*comp_)(T, T));
 	virtual void sort(std::vector<T>&, int, int)  = 0;
-	virtual ~Sorting() {}
+	virtual ~SortingStrategy() {}
 };
 template <typename T>
 class InsertionSort: public SortingStrategy<T> {
@@ -59,10 +59,10 @@ void QuickSort<T>::sort(std::vector<T>& to_sort, int beg, int end) {
     T tmp;
     T pivot = to_sort[(beg + end) / 2];
     while (i <= j) {
-        while (Sorting<T>::comp(to_sort[i], pivot)) {
+        while ( SortingStrategy<T>::comp(to_sort[i], pivot)) {
             i++;
         }
-        while (!Sorting<T>::comp(to_sort[j], pivot)) {
+        while (! SortingStrategy<T>::comp(to_sort[j], pivot)) {
             j--;
         }
         if (i <= j) {
@@ -87,7 +87,7 @@ void InsertionSort<T>::sort(std::vector<T>& to_sort, int beg, int end) {
         key = to_sort[i];
         j = i - 1;
 
-        while (j >= 0 && !Sorting<T>::comp(to_sort[j], key))
+        while (j >= 0 && ! SortingStrategy<T>::comp(to_sort[j], key))
         {
             to_sort[j + 1] = to_sort[j];
             j = j - 1;
@@ -120,7 +120,7 @@ void MergeSort<T>::merge(std::vector<T>& to_sort, int beg, int end) {
         k = beg;
     while (i < n1 && j < n2)
     {
-        if (Sorting<T>::comp(Left[i], Right[j]))
+        if ( SortingStrategy<T>::comp(Left[i], Right[j]))
         {
             to_sort[k] = Left[i];
             i++;
