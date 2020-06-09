@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 template <typename T>
-class SortingStrategy{
+class SortingStrategy{                          //Strategy Pattern
 protected:
 	bool (*comp) (T first, T second);
 public:
