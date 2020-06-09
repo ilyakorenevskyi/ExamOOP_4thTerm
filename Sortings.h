@@ -2,32 +2,32 @@
 #include <vector>
 #include <thread>
 template <typename T>
-class Sorting{
+class SortingStrategy{
 protected:
 	bool (*comp) (T first, T second);
 public:
-	Sorting();
-	Sorting(bool (*comp_)(T, T));
+	SortingStrategy();
+	SortingStrategy(bool (*comp_)(T, T));
 	void setComp(bool (*comp_)(T, T));
 	virtual void sort(std::vector<T>&, int, int)  = 0;
 	virtual ~Sorting() {}
 };
 template <typename T>
-class InsertionSort: public Sorting<T> {
+class InsertionSort: public SortingStrategy<T> {
 public:
 	InsertionSort() {}
 	void sort(std::vector<T>&, int, int)  override;
 	~InsertionSort() override {}
 };
 template <typename T>
-class QuickSort : public Sorting<T> {
+class QuickSort : public SortingStrategy<T> {
 public:
 	QuickSort() {}
 	void sort(std::vector<T>&, int, int)  override;
 	~QuickSort() override {}
 };
 template <typename T>
-class MergeSort : public Sorting<T> {
+class MergeSort : public SortingStrategy<T> {
 public:
 	MergeSort() {}
 	
@@ -36,19 +36,19 @@ public:
 	~MergeSort() override {}
 };
 template <typename T>
-class CountSort : public Sorting<T> {
+class CountSort : public SortingStrategy<T> {
 public:
 	CountSort() {}
 	void sort(std::vector<T>&, int, int) override;
 	~CountSort() override {}
 };
 template<typename T>
-Sorting<T>::Sorting() {
+SortingStrategy<T>::SortingStrategy() {
     comp = [](T  first, T second) { return first < second; };
 }
 
 template<typename T>
-Sorting<T>::Sorting(bool(*comp_)(T, T))
+SortingStrategy<T>::SortingStrategy(bool(*comp_)(T, T))
 {
     comp = comp_;
 }
