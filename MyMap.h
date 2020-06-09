@@ -1,8 +1,11 @@
-#pragma once
+#ifndef MYMAP_H
+#define MYMAP_H
+
 #include <vector>
 #include <map>
 #include "SplayTree.h"
 #include "SeparateHash.h"
+
 template <typename K, typename T>
 class MyMap{
 	virtual T get(K key) = 0;
@@ -96,10 +99,8 @@ template<typename K, typename T>
 }
 
  template<typename K, typename T>
-std::vector<std::pair<K, T>> MyMapTree<K, T>::getPairs()
- {
-	 return tree->preOrder();
-
+std::vector<std::pair<K, T>> MyMapTree<K, T>::getPairs() {
+	
  }
 
 
@@ -116,3 +117,59 @@ public:
 	std::vector<T> getValues() override;
 	std::vector<std::pair<K, T>> getPairs() override;
 };
+
+template<typename K, typename T>
+MapAdapterToMyMap<K, T>::MapAdapterToMyMap(){
+}
+
+template<typename K, typename T>
+inline T MapAdapterToMyMap<K, T>::get(K key)
+{
+	return map_[key];
+}
+
+template<typename K, typename T>
+void MapAdapterToMyMap<K, T>::set(K key, T value){
+	if (map_.find(key) != map_.end()) add(key, value);
+	else map_[key] = value;
+}
+
+template<typename K, typename T>
+void MapAdapterToMyMap<K, T>::add(K key, T value){
+	map_[key]= value;
+}
+
+template<typename K, typename T>
+void MapAdapterToMyMap<K, T>::remove(K key){
+	map_.erase(key);
+}
+
+template<typename K, typename T>
+std::vector<K> MapAdapterToMyMap<K, T>::getKeys(){
+	std::vector<K> res;
+	for (auto iter : map_) {
+		res.push_back(iter.first);
+	}
+	return res;
+
+}
+
+template<typename K, typename T>
+inline std::vector<T> MapAdapterToMyMap<K, T>::getValues()
+{
+		std::vector<T> res;
+		for (auto iter : map_)
+			res.push_back(iter.second);
+		return res;
+}
+
+template<typename K, typename T>
+inline std::vector<std::pair<K, T>> MapAdapterToMyMap<K, T>::getPairs()
+{
+	std::vector<std::pair<K, T>> res;
+	for (auto iter : map_)
+		res.push_back({ iter.first,iter.second });
+	return res;
+}
+
+#endif

@@ -4,9 +4,9 @@
 #include "Sortings.h"
 #include "MyMap.h"
 int main() {
-	MyMapTree<int, int> m1;
-	m1.add(1, 2);
-	m1.add(2, 3);
-	std::cout << m1.get(1);
+	MapAdapterToMyMap<int, int> m1;
+	m1.add(12, 3);
+	m1.add(13, 4);
+	cout << m1.get(13);
 	return 0;
 }
