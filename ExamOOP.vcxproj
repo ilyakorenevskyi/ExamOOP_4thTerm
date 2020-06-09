@@ -30,6 +30,8 @@
     <ClCompile Include="Sortings.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="SplayTree.cpp" />
+    <ClCompile Include="Tree\BPlusTree.cpp" />
+    <ClCompile Include="Tree\SplayTree.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BPlusTree.h" />

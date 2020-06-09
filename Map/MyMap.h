@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <map>
-#include "SplayTree.h"
-#include "SeparateHash.h"
+#include "../Tree/SplayTree.h"
+#include "../Hash/SeparateHash.h"
 
 template <typename K, typename T>
 class MyMap{

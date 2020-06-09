@@ -1,8 +1,8 @@
 #include <iostream>
-#include "SplayTree.h"
-#include "BPlusTree.h"
-#include "Sortings.h"
-#include "MyMap.h"
+#include "Tree/SplayTree.h"
+#include "Tree/BPlusTree.h"
+#include "Sortings/Sortings.h"
+#include "Map/MyMap.h"
 int main() {
 	MapAdapterToMyMap<int, int> m1;
 	m1.add(12, 3);
